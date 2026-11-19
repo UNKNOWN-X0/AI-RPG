@@ -66,7 +66,7 @@ js/state.js         Game state and player stats
 js/dom.js           References to page elements
 js/setup.js         Startup, key entry, and quick actions
 js/adventure.js     Story requests, player turns, and loading state
-js/api.js           Anthropic Messages API request
+js/api.js           Provider presets and the Anthropic and OpenAI-style requests
 js/stats.js         Stat-tag parsing and display updates
 js/ui.js            Story messages and page startup
 tests/              Functionality tests (node --test)
