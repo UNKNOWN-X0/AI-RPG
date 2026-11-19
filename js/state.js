@@ -1,6 +1,7 @@
 // Game State
 const gameState = {
   apiKey: "",
+  provider: { id: "anthropic", model: "", baseUrl: "" },
   adventureStarted: false,
   player: {
     health: 100,

@@ -39,6 +39,35 @@ h1 {
   align-items: center;
 }
 
+.api-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #2a5298;
+}
+
+#providerSelect,
+.api-endpoint input {
+  width: 100%;
+  max-width: 500px;
+  padding: 10px 12px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  background: white;
+}
+
+.api-endpoint {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  max-width: 500px;
+}
+
+.api-endpoint[hidden] {
+  display: none;
+}
+
 #apiKeyInput {
   width: 100%;
   max-width: 500px;

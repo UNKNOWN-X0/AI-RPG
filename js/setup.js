@@ -6,6 +6,7 @@ function initGame() {
   }
 
   updateStats();
+  setupProviderPicker();
   apiKeyInput.addEventListener("keydown", (event) => {
     if (event.key === "Enter") saveApiKey();
   });
@@ -46,6 +47,41 @@ Start the adventure now in a fantasy setting.`,
   ];
 }
 
+// Provider picker: Claude by default, or a service with a free-tier key.
+function setupProviderPicker() {
+  const select = document.getElementById("providerSelect");
+  if (!select || typeof PROVIDERS === "undefined" || !select.appendChild) return;
+  for (const [id, p] of Object.entries(PROVIDERS)) {
+    const option = document.createElement("option");
+    option.value = id;
+    option.textContent = p.label;
+    select.appendChild(option);
+  }
+  select.value = gameState.provider?.id || "anthropic";
+  select.addEventListener("change", showProviderFields);
+  showProviderFields();
+}
+
+function showProviderFields() {
+  const id = document.getElementById("providerSelect").value;
+  const p = PROVIDERS[id] || PROVIDERS.anthropic;
+  document.getElementById("providerEndpoint").hidden = p.kind !== "openai";
+  document.getElementById("providerModel").value = p.model || "";
+  document.getElementById("providerBaseUrl").value = p.baseUrl || "";
+  document.getElementById("providerName").textContent = id === "anthropic" ? "Anthropic" : id === "custom" ? "the service you enter" : p.label.replace(/ \(.*\)$/, "");
+  const link = document.getElementById("providerKeyLink");
+  document.getElementById("providerKeyHint").hidden = !p.keyUrl;
+  if (p.keyUrl) {
+    link.href = p.keyUrl;
+    link.textContent = p.keyUrl.replace(/^https:\/\//, "").replace(/\/$/, "");
+  }
+}
+
+function fieldValue(id) {
+  const el = document.getElementById(id);
+  return el && typeof el.value === "string" ? el.value.trim() : "";
+}
+
 function saveApiKey() {
   if (adventureRequestPending) return;
   const status = document.getElementById("apiKeyStatus");
@@ -55,6 +91,17 @@ function saveApiKey() {
     apiKeyInput.focus();
     return;
   }
+
+  const chosen = fieldValue("providerSelect");
+  const id = typeof PROVIDERS !== "undefined" && PROVIDERS[chosen] ? chosen : "anthropic";
+  const isOpenAI = id !== "anthropic";
+  const model = isOpenAI ? fieldValue("providerModel") : "";
+  const baseUrl = isOpenAI ? fieldValue("providerBaseUrl") : "";
+  if (isOpenAI && (!model || !baseUrl)) {
+    status.textContent = "Enter the service's address and model name.";
+    return;
+  }
+  gameState.provider = { id, model, baseUrl };
 
   status.textContent = "";
   gameState.apiKey = key;

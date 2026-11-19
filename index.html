@@ -11,21 +11,26 @@
       <header>
         <h1>🎮 AI RPG Adventure</h1>
         <div class="api-setup" id="apiSetup">
+          <label for="providerSelect" class="api-label">AI provider</label>
+          <select id="providerSelect"></select>
+          <div class="api-endpoint" id="providerEndpoint" hidden>
+            <input type="text" id="providerModel" aria-label="Model name" placeholder="Model name" autocomplete="off" />
+            <input type="url" id="providerBaseUrl" aria-label="Service address" placeholder="https://example.com/v1" autocomplete="off" />
+          </div>
           <input
             type="password"
             id="apiKeyInput"
-            aria-label="Anthropic API key"
+            aria-label="API key"
             aria-describedby="apiKeyStatus"
-            placeholder="Enter your Anthropic API Key"
+            placeholder="Enter your API key"
           />
           <button id="saveApiKey">Save Key</button>
           <p id="apiKeyStatus" role="status"></p>
           <p class="api-hint">
             Your key is kept only until you reload. Requests go directly to
-            Anthropic. Get your API key from
-            <a href="https://console.anthropic.com/" target="_blank"
-              >console.anthropic.com</a
-            >
+            <span id="providerName">Anthropic</span>.
+            <span id="providerKeyHint">Get your API key from
+            <a id="providerKeyLink" href="https://console.anthropic.com/" target="_blank" rel="noopener">console.anthropic.com</a></span>
           </p>
         </div>
       </header>

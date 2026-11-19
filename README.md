@@ -16,12 +16,13 @@ A small browser-based fantasy RPG. Claude acts as the dungeon master: describe w
 - **Claude as dungeon master:** a fantasy adventure that responds to every turn.
 - **Live stats:** health, attack, defense, and gold shown as you play.
 - **Stat tags:** responses update stats with tags such as `[HEALTH: -15]` and `[GOLD: +25]`.
+- **Choice of provider:** Claude by default, or Google Gemini, OpenRouter, or another OpenAI-compatible service, so a free-tier key works too.
 
 ## Getting started
 
 ### Use it online
 
-Open the [live site](https://unknown-x0.github.io/AI-RPG/) and enter an Anthropic API key on the start screen. API usage may incur charges under your Anthropic account.
+Open the [live site](https://unknown-x0.github.io/AI-RPG/), choose a provider, and enter its API key on the start screen. Anthropic keys are paid per use; Google Gemini ([aistudio.google.com/apikey](https://aistudio.google.com/apikey)) and OpenRouter ([openrouter.ai/keys](https://openrouter.ai/keys), model `openrouter/free`) offer free tiers with rate limits. The model name and service address can be changed for any OpenAI-compatible service.
 
 ### Run it yourself
 
@@ -37,7 +38,7 @@ Then open `http://127.0.0.1:8000`, or use VS Code's Live Server extension.
 
 ## Privacy
 
-The API key is kept in memory for the current page session and cleared when the page reloads; it is never stored. The browser sends your actions and the story so far directly to Anthropic's Messages API. Never publish your key or commit it to this repository.
+The API key is kept in memory for the current page session and cleared when the page reloads; it is never stored. The browser sends your actions and the story so far directly to the provider you chose (Anthropic's Messages API, or the service's chat-completions endpoint), and nowhere else. Never publish your key or commit it to this repository.
 
 ## Development
 
@@ -45,7 +46,7 @@ The API key is kept in memory for the current page session and cleared when the 
 
 - Change the starting player stats and inventory in `js/state.js`.
 - Edit the dungeon-master instructions in `js/setup.js`.
-- Adjust the Claude model and request settings in `js/api.js`.
+- Adjust the Claude model, the provider presets, and request settings in `js/api.js`.
 - Add stat tags in `js/stats.js` and explain them in the prompt in `js/setup.js`.
 
 ## Tests

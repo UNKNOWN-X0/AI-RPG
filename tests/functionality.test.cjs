@@ -315,3 +315,42 @@ test("all modules initialize, open an adventure, and wire each quick action", as
   assert.equal(requests.length, 5);
   assert.equal(nodes.gold.textContent, 55);
 });
+
+function providerApi(provider, fetch) {
+  const c = { fetch, gameState: { apiKey: "free-key", provider }, AbortController, setTimeout, clearTimeout };
+  vm.createContext(c);
+  vm.runInContext(fs.readFileSync(base + "js/api.js", "utf8"), c);
+  return c.callClaudeAPI;
+}
+
+test("a free-tier provider gets an OpenAI-style request with the player's key", async () => {
+  let seen;
+  const call = providerApi({ id: "openrouter", model: "", baseUrl: "" }, async (url, request) => {
+    seen = { url, request };
+    return { ok: true, json: async () => ({ choices: [{ message: { content: "The cave is dark." } }] }) };
+  });
+  assert.equal(await call([{ role: "user", content: "Look around" }]), "The cave is dark.");
+  assert.equal(seen.url, "https://openrouter.ai/api/v1/chat/completions");
+  assert.equal(seen.request.headers.Authorization, "Bearer free-key");
+  assert.equal(seen.request.headers["x-api-key"], undefined);
+  const body = JSON.parse(seen.request.body);
+  assert.equal(body.model, "openrouter/free");
+  assert.equal(body.messages[0].content, "Look around");
+});
+
+test("a custom provider uses the player's address and model, and reports API errors", async () => {
+  let url;
+  const call = providerApi({ id: "custom", model: "my-model", baseUrl: "https://llm.example/v1/" }, async (u) => {
+    url = u;
+    return { ok: false, status: 429, json: async () => ({ error: { message: "Rate limit reached" } }) };
+  });
+  await assert.rejects(call([]), /Rate limit reached/);
+  assert.equal(url, "https://llm.example/v1/chat/completions");
+});
+
+test("a custom provider without an address is refused before any request", async () => {
+  let called = false;
+  const call = providerApi({ id: "custom", model: "", baseUrl: "" }, async () => { called = true; });
+  await assert.rejects(call([]), /address and model/);
+  assert.equal(called, false);
+});
