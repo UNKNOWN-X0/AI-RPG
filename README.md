@@ -10,18 +10,36 @@ A small browser-based fantasy RPG. Claude acts as the dungeon master: describe w
 
 ## Features
 
-- Free-form player actions and quick-action buttons.
-- A fantasy adventure guided by Claude.
-- Health, attack, defense, and gold displayed as you play.
-- Responses can update stats with tags such as `[HEALTH: -15]` and `[GOLD: +25]`.
+- **Free-form actions:** type what your character does, or use the quick-action buttons.
+- **Claude as dungeon master:** a fantasy adventure that responds to every turn.
+- **Live stats:** health, attack, defense, and gold shown as you play.
+- **Stat tags:** responses update stats with tags such as `[HEALTH: -15]` and `[GOLD: +25]`.
 
 ## Getting started
 
-Open the [live site](https://unknown-x0.github.io/AI-RPG/), or clone the repository and open `index.html` with a local server such as VS Code's Live Server extension. There is no build step or package installation.
+### Use it online
 
-Enter an Anthropic API key on the start screen to begin. The key is kept in memory for the current page session and is cleared when the page reloads. The browser sends requests directly to Anthropic; never publish your key or commit it to this repository. API usage may incur charges under your Anthropic account.
+Open the [live site](https://unknown-x0.github.io/AI-RPG/) and enter an Anthropic API key on the start screen. API usage may incur charges under your Anthropic account.
 
-## Customize
+### Run it yourself
+
+Clone the repository and serve the folder; there is no build step or package installation.
+
+```sh
+git clone https://github.com/UNKNOWN-X0/AI-RPG.git
+cd AI-RPG
+python3 -m http.server 8000 --bind 127.0.0.1
+```
+
+Then open `http://127.0.0.1:8000`, or use VS Code's Live Server extension.
+
+## Privacy
+
+The API key is kept in memory for the current page session and cleared when the page reloads; it is never stored. The browser sends your actions and the story so far directly to Anthropic's Messages API. Never publish your key or commit it to this repository.
+
+## Development
+
+### Customize
 
 - Change the starting player stats and inventory in `js/state.js`.
 - Edit the dungeon-master instructions in `js/setup.js`.
