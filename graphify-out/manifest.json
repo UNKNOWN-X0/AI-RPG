@@ -6,8 +6,8 @@
     "semantic_hash": "29fe146da84567bcc68665ce404ff135"
   },
   "js/adventure.js": {
-    "mtime": 1793022742.7852824,
-    "seen": 1793022905.902226,
+    "mtime": 1793022928.5994983,
+    "seen": 1795076483.2086358,
     "ast_hash": "61b848e18f3d0cbae8a29183968a85dc",
     "semantic_hash": "61b848e18f3d0cbae8a29183968a85dc"
   },
@@ -54,10 +54,10 @@
     "semantic_hash": "f383f8a03dd2168e3f03f3cc3f34438e"
   },
   "README.md": {
-    "mtime": 1792792947.7702115,
-    "seen": 1792798298.023409,
-    "ast_hash": "42ff8ee6bc1675093034b779fbbe1f84",
-    "semantic_hash": "42ff8ee6bc1675093034b779fbbe1f84"
+    "mtime": 1795051896.266892,
+    "seen": 1795076483.208647,
+    "ast_hash": "9fd8bd12a25c25cb8ab942bda5c3adad",
+    "semantic_hash": ""
   },
   "index.html": {
     "mtime": 1792792104.9295568,
@@ -66,9 +66,21 @@
     "semantic_hash": "d06c614bff93e6b590fde2d3ef3fe4ba"
   },
   "AGENTS.md": {
-    "mtime": 1792868331.1539946,
-    "seen": 1792874618.515428,
-    "ast_hash": "1fd840c3868657581070dd0b1de8365e",
+    "mtime": 1793023758.0569742,
+    "seen": 1795076483.2086458,
+    "ast_hash": "7af4a07753df0476e10cf438ef59251d",
+    "semantic_hash": ""
+  },
+  "ROADMAP.md": {
+    "mtime": 1795051896.2092638,
+    "seen": 1795076483.208648,
+    "ast_hash": "8b23dda4a1bcc3bf63c9f8f7d0be31bf",
+    "semantic_hash": ""
+  },
+  "assets/preview.png": {
+    "mtime": 1795051214.4579465,
+    "seen": 1795076483.208651,
+    "ast_hash": "7941a5923cd781bf73e965e800aa6002",
     "semantic_hash": ""
   }
 }
