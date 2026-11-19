@@ -8,6 +8,8 @@ A small browser-based fantasy RPG. Claude acts as the dungeon master: describe w
 
 **[Open AI RPG Adventure →](https://unknown-x0.github.io/AI-RPG/)**
 
+![AI RPG Adventure](assets/preview.png)
+
 ## Features
 
 - **Free-form actions:** type what your character does, or use the quick-action buttons.
@@ -57,16 +59,17 @@ The tests load the scripts against a fake page and a stubbed API, and check setu
 ## Project structure
 
 ```text
-index.html       Page structure and ordered script loading
-styles.css       Layout and visual styles
-js/state.js      Game state and player stats
-js/dom.js        References to page elements
-js/setup.js      Startup, key entry, and quick actions
-js/adventure.js  Story requests, player turns, and loading state
-js/api.js        Anthropic Messages API request
-js/stats.js      Stat-tag parsing and display updates
-js/ui.js         Story messages and page startup
-tests/           Functionality tests (node --test)
+index.html          Page structure and ordered script loading
+styles.css          Layout and visual styles
+js/state.js         Game state and player stats
+js/dom.js           References to page elements
+js/setup.js         Startup, key entry, and quick actions
+js/adventure.js     Story requests, player turns, and loading state
+js/api.js           Anthropic Messages API request
+js/stats.js         Stat-tag parsing and display updates
+js/ui.js            Story messages and page startup
+tests/              Functionality tests (node --test)
+assets/preview.png  Screenshot for this README
 ```
 
 The JavaScript files are classic scripts that share one page scope. Keep their loading order in `index.html` when adding or moving a module.
