@@ -73,3 +73,9 @@ assets/preview.png  Screenshot for this README
 ```
 
 The JavaScript files are classic scripts that share one page scope. Keep their loading order in `index.html` when adding or moving a module.
+
+## Project documents
+
+| File | What it covers |
+| --- | --- |
+| [ROADMAP.md](ROADMAP.md) | What is planned next, with an issue per item |
