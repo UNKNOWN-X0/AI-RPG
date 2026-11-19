@@ -1,17 +1,17 @@
-# Graph Report - AIRPG  (2026-10-26)
+# Graph Report - AI-RPG  (2026-11-19)
 
 ## Corpus Check
-- 11 files · ~2,512 words
+- 12 files · ~2,811 words
 - Verdict: corpus is large enough that graph structure adds value.
-- Unclassified: 4 file(s) not represented in the graph (top: (none) 3, .css 1)
+- Unclassified: 3 file(s) not represented in the graph (top: (none) 2, .css 1)
 
 ## Summary
-- 73 nodes · 72 edges · 11 communities (6 shown, 5 thin omitted)
+- 80 nodes · 78 edges · 12 communities (7 shown, 5 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 1 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `8bbef330`
+- Built from commit: `ba60a112`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -22,21 +22,22 @@
 - Jekyll CI Workflow
 - CI Build Job
 - Adventure Flow
+- Roadmap
 - Character Stats
 - Game State
 - Project instructions
 
 ## God Nodes (most connected - your core abstractions)
-1. `AI RPG Adventure page` - 5 edges
-2. `steps` - 4 edges
+1. `Roadmap` - 6 edges
+2. `AI RPG Adventure page` - 5 edges
 3. `initGame()` - 4 edges
-4. `build` - 3 edges
-5. `setAdventureBusy()` - 3 edges
+4. `steps` - 4 edges
+5. `el()` - 3 edges
 6. `sendPlayerAction()` - 3 edges
-7. `saveApiKey()` - 3 edges
-8. `showGameArea()` - 3 edges
-9. `el()` - 3 edges
-10. `Browser-based fantasy RPG` - 3 edges
+7. `setAdventureBusy()` - 3 edges
+8. `saveApiKey()` - 3 edges
+9. `showGameArea()` - 3 edges
+10. `build` - 3 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `initGame()` --indirect_call--> `sendPlayerAction()`  [INFERRED]
@@ -51,7 +52,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (11 total, 5 thin omitted)
+## Communities (12 total, 5 thin omitted)
 
 ### Community 0 - "AI RPG Interface"
 Cohesion: 0.14
@@ -77,21 +78,25 @@ Nodes (6): runs-on, steps, build, name, run, uses
 Cohesion: 0.43
 Nodes (6): sendPlayerAction(), setAdventureBusy(), startAdventure(), initGame(), saveApiKey(), showGameArea()
 
+### Community 6 - "Roadmap"
+Cohesion: 0.29
+Nodes (6): Direction, Later, Next, Not planned, Now, Roadmap
+
 ## Knowledge Gaps
 - **5 isolated node(s):** `Player action input`, `Quick action buttons`, `Bracketed tags update player stats`, `Browser sends requests directly to Anthropic`, `Free-form player actions`
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 39 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 45 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **5 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `build` connect `CI Build Job` to `Jekyll CI Workflow`?**
-  _High betweenness centrality (0.017) - this node is a cross-community bridge._
+  _High betweenness centrality (0.014) - this node is a cross-community bridge._
 - **What connects `Player action input`, `Quick action buttons`, `Bracketed tags update player stats` to the rest of the system?**
   _5 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `AI RPG Interface` be split into smaller, more focused modules?**
   _Cohesion score 0.14285714285714285 - nodes in this community are weakly interconnected._
 - **Why does `jobs` connect `Jekyll CI Workflow` to `CI Build Job`?**
-  _High betweenness centrality (0.016) - this node is a cross-community bridge._
+  _High betweenness centrality (0.014) - this node is a cross-community bridge._
 - **Should `DOM Bindings` be split into smaller, more focused modules?**
   _Cohesion score 0.14285714285714285 - nodes in this community are weakly interconnected._
