@@ -20,7 +20,7 @@ A small, dependency-free story game: type what your character does and Claude na
 
 **Streamed replies** (stated 2026-11-19, [#4](https://github.com/UNKNOWN-X0/AI-RPG/issues/4)). Show the narration as it arrives.
 
-**A free provider** (stated 2026-11-19, [#5](https://github.com/UNKNOWN-X0/AI-RPG/issues/5)). Let players without a paid key play; waits on a decision.
+**A free provider** (stated 2026-11-19, [#5](https://github.com/UNKNOWN-X0/AI-RPG/issues/5)). Players without a paid Anthropic key can use their own free-tier key from another provider; Claude stays the default.
 
 ## Not planned
 
